@@ -48,7 +48,14 @@ if ( sizeof($request_array['events']) > 0 )
   }
  }
 }
-
+$row = 1;
+$objCSV = fopen("production.csv", "r");
+while (($objArr = fgetcsv($objCSV, 1000, ",")) !== FALSE) {
+    $num = count($data);
+   echo $objArr[0]." ".$objArr[1]." "."$objArr[2]"." "."$objArr[3]"."."$objArr[4]"."."$objArr[5]"."."$objArr[6]"."</br>";
+    $row++;
+ }
+fclose($objCSV);
 echo "OK";
 echo $reply_message;
 
