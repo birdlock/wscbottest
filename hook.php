@@ -33,6 +33,7 @@ if ( sizeof($request_array['events']) > 0 )
       }
       else
       $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
+      $reply_message = $item1[2];
      // $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว ('.$event['source']['userId'].')';
       $row++;
    }
