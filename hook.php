@@ -23,7 +23,7 @@ if ( sizeof($request_array['events']) > 0 )
     $row = 1;
     $objCSV = fopen("production.csv", "r");
     while (($objArr = fgetcsv($objCSV, 1000, ",")) !== FALSE) {
-      $num = count($data);
+      $num = count($objArr);
       if($text==$objArr[0]){
         $reply_message='ค่างวดของคุณคือ ('.$objArr[6].') บาท';
       }
@@ -32,8 +32,9 @@ if ( sizeof($request_array['events']) > 0 )
      // $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว ('.$event['source']['userId'].')';
       $row++;
    }
+  echo $objArr[0]; 
   fclose($objCSV);
-echo $objArr[0];   }
+   }
    else
     $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
   
