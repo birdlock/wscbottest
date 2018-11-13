@@ -20,20 +20,12 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-    if($text == '1000001'){
-      $money='3,500';
+    if($text == "1000001"){
+      $money="3,500";
       $reply_message='คุณค้างค่างวดเป็นจำนวนเงิน ('.$money.')';
     }
-    elseif($text == '1000005'){
-      $money='4,500';
-      $reply_message='คุณค้างค่างวดเป็นจำนวนเงิน ('.$money.')';
-    }
-    elseif($text == '1000008'){
-      $money='3,900';
-      $reply_message='คุณค้างค่างวดเป็นจำนวนเงิน ('.$money.')';
-    }
-    elseif($text == '1000009'){
-      $money='3,100';
+    elseif($text == "1000005"){
+      $money="4,500";
       $reply_message='คุณค้างค่างวดเป็นจำนวนเงิน ('.$money.')';
     }
     else{
