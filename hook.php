@@ -20,8 +20,18 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-    $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว ('.$event['source']['userId'].')';
+    if($tex=='1001'){
+      $reply_message='ค่างวดของคุณคือ 3,500 บาท';
+    }
+   // $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว ('.$event['source']['userId'].')';
    }
+   else
+    $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
+  
+  }
+  else
+   $reply_message = 'ระบบได้รับข้อความ Event '.ucfirst($event['type']).' ของคุณแล้ว';
+ 
   if( strlen($reply_message) > 0 )
   {
    //$reply_message = iconv("tis-620","utf-8",$reply_message);
