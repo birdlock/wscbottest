@@ -45,7 +45,7 @@ if ( sizeof($request_array['events']) > 0 )
 }
 
 echo "OK";
-echo $ACCESS_TOKEN;
+echo $reply_message;
 
 function send_reply_message($url, $post_header, $post_body)
 {
