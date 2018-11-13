@@ -29,7 +29,7 @@ if ( sizeof($request_array['events']) > 0 )
       $item1[$row]=$objArr[0];
       $item2[$row]=$objArr[6];
       if(in_array($text,$item1)){
-        $reply_message='ค่างวดของคุณคือ ('.$item2[6].') บาท';
+        $reply_message='ค่างวดของคุณคือ ('.$objArr[6].') บาท';
       }
       else
       $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
