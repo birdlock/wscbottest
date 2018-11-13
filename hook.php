@@ -32,8 +32,8 @@ if ( sizeof($request_array['events']) > 0 )
      // $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว ('.$event['source']['userId'].')';
       $row++;
    }
-  fclose($objCSV);
-echo $num;   }
+   echo $objArr[3][0];
+  fclose($objCSV);   }
    else
     $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
   
