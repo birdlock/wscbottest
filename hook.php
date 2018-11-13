@@ -28,12 +28,11 @@ if ( sizeof($request_array['events']) > 0 )
       $num = count($objArr);
       $item1[$row]=$objArr[0];
       $item2[$row]=$objArr[6];
-      if(in_array($text,$item1[$row])){
+      if(in_array($text,$item1[$row])==true){
         $reply_message='ค่างวดของคุณคือ ('.$item2[$row].') บาท';
       }
       else
       $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
-      $reply_message = $item1[2];
      // $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว ('.$event['source']['userId'].')';
       $row++;
    }
