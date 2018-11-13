@@ -24,7 +24,7 @@ if ( sizeof($request_array['events']) > 0 )
     $objCSV = fopen("production.csv", "r");
     while (($objArr = fgetcsv($objCSV, 1000, ",")) !== FALSE) {
       $num = count($objArr);
-      echo $objArr[0];
+      $reply_message= $objArr[0];
       if($text==$objArr[0]){
         $reply_message='ค่างวดของคุณคือ ('.$objArr[6].') บาท';
       }
