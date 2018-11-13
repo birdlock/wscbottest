@@ -28,7 +28,7 @@ if ( sizeof($request_array['events']) > 0 )
       $num = count($objArr);
       $item1[$row]=$objArr[0];
       $item2[$row]=$objArr[6];
-      if(in_array($text,$item1[$row])){
+      if(in_array($text,$item1)){
         $reply_message='ค่างวดของคุณคือ ('.$item2[$row].') บาท';
       }
       else
@@ -61,7 +61,6 @@ if ( sizeof($request_array['events']) > 0 )
 }
 
 echo "OK";
-echo $reply_message;
 
 function send_reply_message($url, $post_header, $post_body)
 {
