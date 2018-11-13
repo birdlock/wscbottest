@@ -20,15 +20,28 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-    $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว ('.$event['source']['userId'].')';
+    if($text == '1000001'){
+      $money='3,500';
+      $reply_message='คุณค้างค่างวดเป็นจำนวนเงิน ('.$money.')';
+    }
+    elseif($text == '1000005'){
+      $money='4,500';
+      $reply_message='คุณค้างค่างวดเป็นจำนวนเงิน ('.$money.')';
+    }
+    elseif($text == '1000008'){
+      $money='3,900';
+      $reply_message='คุณค้างค่างวดเป็นจำนวนเงิน ('.$money.')';
+    }
+    elseif($text == '1000009'){
+      $money='3,100';
+      $reply_message='คุณค้างค่างวดเป็นจำนวนเงิน ('.$money.')';
+    }
+    else{
+      $reply_message='กรุณากรอกรหัสสมาชิกให้ถูกต้อง';
+        }
+    $reply_message='กรุณากรอกเลขสมาชิกของคุณ';
+    //$reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว ('.$event['source']['userId'].')';
    }
-   else
-    $reply_message = 'ระบบได้รับข้อความ '.ucfirst($event['message']['type']).' ของคุณแล้ว';
-  
-  }
-  else
-   $reply_message = 'ระบบได้รับข้อความ Event '.ucfirst($event['type']).' ของคุณแล้ว';
- 
   if( strlen($reply_message) > 0 )
   {
    //$reply_message = iconv("tis-620","utf-8",$reply_message);
