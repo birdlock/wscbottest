@@ -8,12 +8,7 @@ $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
 $row = 1;
 $objCSV = fopen("production.csv", "r");
-while (($objArr = fgetcsv($objCSV, 1000, ",")) !== FALSE) {
-    $num = count($data);
-   echo $objArr[0]."".$objArr[1]."".$objArr[2]."".$objArr[3]."".$objArr[4]."".$objArr[5]."".$objArr[6]."</br>";
-    $row++;
- }
-fclose($objCSV);
+
 echo $row."<br>";
 echo $objArr[5][0];
 if ( sizeof($request_array['events']) > 0 )
@@ -29,12 +24,18 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-    if($text=='1001'){
-      $reply_message='ค่างวดของคุณคือ 3,500 บาท';
-    }
-    else
-    $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
-   // $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว ('.$event['source']['userId'].')';
+    while (($objArr = fgetcsv($objCSV, 1000, ",")) !== FALSE) {
+      $num = count($data);
+      if($text==$objArr[0]){
+        $reply_message='ค่างวดของคุณคือ ('.$objArr[6].') บาท';
+      }
+      else
+      $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
+     // $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว ('.$event['source']['userId'].')';
+      $row++;
+   }
+  fclose($objCSV);
+
    }
    else
     $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
