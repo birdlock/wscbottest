@@ -20,7 +20,7 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-    $row = 1;
+    $row = 0;
     $iteml=array();
     $item2=array();
     $objCSV = fopen("production.csv", "r");
@@ -28,7 +28,7 @@ if ( sizeof($request_array['events']) > 0 )
       $num = count($objArr);
       $item1[$row]=$objArr[0];
       $item2[$row]=$objArr[6];
-      if(in_array($text,$item1[$row])==true){
+      if(in_array($text,$item1[$row])){
         $reply_message='ค่างวดของคุณคือ ('.$item2[$row].') บาท';
       }
       else
