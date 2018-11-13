@@ -14,7 +14,7 @@ while (($objArr = fgetcsv($objCSV, 1000, ",")) !== FALSE) {
     $row++;
  }
 fclose($objCSV);
-echo $row-1."<br>";
+echo $row."<br>";
 echo $objArr[5][0];
 if ( sizeof($request_array['events']) > 0 )
 {
