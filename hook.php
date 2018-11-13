@@ -6,11 +6,7 @@ $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' 
 
 $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
-$row = 1;
-$objCSV = fopen("production.csv", "r");
 
-echo $row."<br>";
-echo $objArr[5][0];
 if ( sizeof($request_array['events']) > 0 )
 {
 
@@ -24,6 +20,8 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
+    $row = 1;
+    $objCSV = fopen("production.csv", "r");
     while (($objArr = fgetcsv($objCSV, 1000, ",")) !== FALSE) {
       $num = count($data);
       if($text==$objArr[0]){
@@ -35,8 +33,7 @@ if ( sizeof($request_array['events']) > 0 )
       $row++;
    }
   fclose($objCSV);
-
-   }
+echo $objArr[0];   }
    else
     $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
   
