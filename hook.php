@@ -20,9 +20,11 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-    if($tex=='1001'){
+    if($text=='1001'){
       $reply_message='ค่างวดของคุณคือ 3,500 บาท';
     }
+    else
+    $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
    // $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว ('.$event['source']['userId'].')';
    }
    else
