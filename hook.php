@@ -20,16 +20,7 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-    if($text == "1000001"){
-      $money="3,500";
-      $reply_message='คุณค้างค่างวดเป็นจำนวนเงิน ('.$money.')';
-    }
-    else{
-      $reply_message='กรุณากรอกรหัสสมาชิกให้ถูกต้อง';
-    }
-      
-    $reply_message='กรุณากรอกเลขสมาชิกของคุณ';
-    //$reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว ('.$event['source']['userId'].')';
+    $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว ('.$event['source']['userId'].')';
    }
   if( strlen($reply_message) > 0 )
   {
