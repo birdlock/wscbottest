@@ -11,7 +11,7 @@ $row = 0;
 $iteml=array();
 $item2=array();
 $objCSV = fopen("production.csv", "r");
-$search = '32';
+$search = 32;
 if (($handle = fopen("production.csv", "r")) !== FALSE) {
   $row1=0;
   $csv_row = array();
