@@ -3,12 +3,7 @@ $conn_string = "host=ec2-23-21-192-179.compute-1.amazonaws.com port=5432 dbname=
 $dbconn = pg_connect($conn_string);
 if($dbconn){
     echo 'success';
-    CREATE TABLE customer(
-        id SERIAL PRIMARY KEY,
-        name VARCHAR NOT NULL,
-        price integer
-     );
-}
+    }
 else{
     echo $dbconn;
 }
