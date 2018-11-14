@@ -12,7 +12,7 @@ $iteml=array();
 $item2=array();
 $objCSV = fopen("production.csv", "r");
 while($row = fgetcsv($objCSV)) {
-  if (in_array("text", $row)) {
+  if (in_array(32, $row)) {
       echo '<div>' . implode(' | ', $row) . ' </div>';
   }
 }
