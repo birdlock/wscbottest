@@ -16,7 +16,7 @@ if (($handle = fopen("production.csv", "r")) !== FALSE) {
   $row1=0;
   $csv_row = array();
   while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-    if ($data[2] == $search) {
+    if ($data[0] == $search) {
       $csv_row[] = $data;
     }
   }
