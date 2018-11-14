@@ -7,6 +7,15 @@ $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' 
 $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
 
+$row = 0;
+$iteml=array();
+$item2=array();
+$objCSV = fopen("production.csv", "r");
+while($row = fgetcsv($objCSV)) {
+  if (in_array("text", $row)) {
+      echo '<div>' . implode(' | ', $row) . ' </div>';
+  }
+}
 if ( sizeof($request_array['events']) > 0 )
 {
 
@@ -20,15 +29,7 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-    $row = 0;
-    $iteml=array();
-    $item2=array();
-    $objCSV = fopen("production.csv", "r");
-    while($row = fgetcsv($objCSV)) {
-      if (in_array("text", $row)) {
-          echo '<div>' . implode(' | ', $row) . ' </div>';
-      }
-  }
+ 
     while (($objArr = fgetcsv($objCSV, 1000, ",")) !== FALSE) {
       $num = count($objArr);
       $item1[$row]=$objArr[0];
