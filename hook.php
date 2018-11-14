@@ -29,16 +29,16 @@ if ( sizeof($request_array['events']) > 0 )
       while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         if ($data[0] == $search) {
           $csv_row[] = $data;
-          foreach ($csv_row as $row1) {
-            $reply_message='ค่างวดของคุณคือ ('.$row1[5].') บาท';
-          }
+          
         }
         else{
           $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
         }
       }
       fclose($handle);
-      
+      foreach ($csv_row as $row1) {
+        $reply_message='ค่างวดของคุณคือ ('.$row1[5].') บาท';
+      }
     }
 
 
