@@ -62,7 +62,7 @@ if ( sizeof($request_array['events']) > 0 )
 }
 
 echo "OK";
-
+echo $key;
 function send_reply_message($url, $post_header, $post_body)
 {
  $ch = curl_init($url);
