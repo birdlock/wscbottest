@@ -1,6 +1,4 @@
 <?php
-CREATE TABLE db_schema_versions (
-  `table` varchar(255) NOT NULL PRIMARY KEY, 
-  `version` INT NOT NULL
-)
+$db = parse_url(getenv("https://data.heroku.com/datastores/fd26cf23-b905-447f-868f-82d7ae70969e#"));
+$db["path"] = ltrim($db["path"], "/");
 ?>
