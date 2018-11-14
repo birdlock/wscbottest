@@ -32,8 +32,10 @@ if ( sizeof($request_array['events']) > 0 )
             $reply_message='ค่างวดของคุณคือ ('.$row1[6].') บาท('.$row.')';
           }
         }
-        else
-        $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
+        else{
+          $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
+        }
+        
       }
       fclose($handle);
       
