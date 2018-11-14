@@ -7,6 +7,7 @@ $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' 
 $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
 
+
   
 if ( sizeof($request_array['events']) > 0 )
 {
@@ -21,28 +22,26 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-    $search = '('.$text.')';
+    $search = $text;
     if (($handle = fopen("production.csv", "r")) !== FALSE) {
       $row1=0;
       $csv_row = array();
       while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         if ($data[0] == $search) {
           $csv_row[] = $data;
-          foreach ($csv_row as $row1) {
-            $reply_message='ค่างวดของคุณคือ ('.$row1[6].') บาท('.$row.')';
-          }
         }
         else{
           $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
         }
-        
       }
       fclose($handle);
-      
+      foreach ($csv_row as $row1) {
+        $reply_message='ค่างวดของคุณคือ ('.$row1[6].') บาท';
+      }
     }
-  
 
-   }
+
+     }
    else
     $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
   
