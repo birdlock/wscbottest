@@ -24,6 +24,11 @@ if ( sizeof($request_array['events']) > 0 )
     $iteml=array();
     $item2=array();
     $objCSV = fopen("production.csv", "r");
+    while($row = fgetcsv($objCSV)) {
+      if (in_array("text", $row)) {
+          echo '<div>' . implode(' | ', $row) . ' </div>';
+      }
+  }
     while (($objArr = fgetcsv($objCSV, 1000, ",")) !== FALSE) {
       $num = count($objArr);
       $item1[$row]=$objArr[0];
