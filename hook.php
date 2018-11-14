@@ -11,11 +11,23 @@ $row = 0;
 $iteml=array();
 $item2=array();
 $objCSV = fopen("production.csv", "r");
-while($row = fgetcsv($objCSV)) {
-  if (in_array(32, $row)) {
-      echo '<div>' . implode(' | ', $row[0]) . ' </div>';
+$search = '32';
+if (($handle = fopen("production.csv", "r")) !== FALSE) {
+  $row=0;
+  $csv_row = array();
+  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+    if ($data[2] == $search) {
+      $csv_row[] = $data;
+    }
   }
-}
+  fclose($handle);
+  foreach ($csv_row as $row) {
+    echo $row[3] . "<br />"; //type
+    echo $row[4] . "<br />"; //description
+    echo $row[5] . "<br />"; //frequency
+    echo "<hr /><br />";
+  }
+}  
 if ( sizeof($request_array['events']) > 0 )
 {
 
