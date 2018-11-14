@@ -21,7 +21,7 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-    $search = $text;
+    $search = '('.$text.')';
     if (($handle = fopen("production.csv", "r")) !== FALSE) {
       $row1=0;
       $csv_row = array();
