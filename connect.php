@@ -3,6 +3,7 @@ $conn_string = "host=ec2-23-21-192-179.compute-1.amazonaws.com port=5432 dbname=
 $dbconn = pg_connect($conn_string);
 if($dbconn){
     echo 'success';
+    echo $dbconn;
 }
 else{
     echo $dbconn;
