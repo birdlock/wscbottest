@@ -7,8 +7,27 @@ $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' 
 $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
 
-
-  
+$row = 0;
+$iteml=array();
+$item2=array();
+$objCSV = fopen("production.csv", "r");
+$search = 32;
+if (($handle = fopen("production.csv", "r")) !== FALSE) {
+  $row1=0;
+  $csv_row = array();
+  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+    if ($data[0] == $search) {
+      $csv_row[] = $data;
+    }
+  }
+  fclose($handle);
+  foreach ($csv_row as $row1) {
+    echo $row1[6] . "<br />"; //type
+    echo $row1[4] . "<br />"; //description
+    echo $row1[5] . "<br />"; //frequency
+    echo "<hr /><br />";
+  }
+}  
 if ( sizeof($request_array['events']) > 0 )
 {
 
@@ -22,26 +41,22 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-    $search = $text;
-    if (($handle = fopen("production.csv", "r")) !== FALSE) {
-      $row1=0;
-      $csv_row = array();
-      while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-        if ($data[0] == $search) {
-          $csv_row[] = $data;
-        }
-        else{
-          $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
-        }
+ 
+    while (($objArr = fgetcsv($objCSV, 1000, ",")) !== FALSE) {
+      $num = count($objArr);
+      $item1[$row]=$objArr[0];
+      $item2[$row]=$objArr[6];
+      if(in_array($text,$item1)){
+        $key = array_search($text,$item1);
+        $reply_message='ค่างวดของคุณคือ ('.$objArr[$key].') บาท('.$row.')';
       }
-      fclose($handle);
-      foreach ($csv_row as $row1) {
-        $reply_message='ค่างวดของคุณคือ ('.$row1[6].') บาท';
-      }
-    }
+      else
+      $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
+     // $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว ('.$event['source']['userId'].')';
+      $row++;
+   }
 
-
-     }
+  fclose($objCSV);   }
    else
     $reply_message = 'กรุณากรอกรหัสสมาชิกของคุณ';
   
