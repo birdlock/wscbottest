@@ -36,7 +36,7 @@ if ( sizeof($request_array['events']) > 0 )
       }
       fclose($handle);
       foreach ($csv_row as $row1) {
-        $reply_message='ค่างวดของคุณคือ ('.$row1[6].') บาท';
+        $reply_message='ค่างวดของคุณคือ ('.$csv_row[6].') บาท';
       }
     }
 
