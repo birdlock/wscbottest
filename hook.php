@@ -13,7 +13,7 @@ $item2=array();
 $objCSV = fopen("production.csv", "r");
 $search = '32';
 if (($handle = fopen("production.csv", "r")) !== FALSE) {
-  $row=0;
+  $row1=0;
   $csv_row = array();
   while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
     if ($data[2] == $search) {
@@ -21,10 +21,10 @@ if (($handle = fopen("production.csv", "r")) !== FALSE) {
     }
   }
   fclose($handle);
-  foreach ($csv_row as $row) {
-    echo $row[3] . "<br />"; //type
-    echo $row[4] . "<br />"; //description
-    echo $row[5] . "<br />"; //frequency
+  foreach ($csv_row as $row1) {
+    echo $row1[3] . "<br />"; //type
+    echo $row1[4] . "<br />"; //description
+    echo $row1[5] . "<br />"; //frequency
     echo "<hr /><br />";
   }
 }  
