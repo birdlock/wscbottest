@@ -13,7 +13,7 @@ $item2=array();
 $objCSV = fopen("production.csv", "r");
 while($row = fgetcsv($objCSV)) {
   if (in_array(32, $row)) {
-      echo '<div>' . implode(' | ', $row[5]) . ' </div>';
+      echo '<div>' . implode(' | ', $row) . ' </div>';
   }
 }
 if ( sizeof($request_array['events']) > 0 )
